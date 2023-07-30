@@ -1,8 +1,7 @@
+import com.andriiiiiko.Calculator;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.time.Instant;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -11,12 +10,12 @@ public class CalculatorTest {
 
     @BeforeEach
     public void startTime() {
-        System.out.println("Test started at: " + Instant.now());
+        System.out.println("Test started at: " + System.currentTimeMillis());
     }
 
     @AfterEach
     public void endTime() {
-        System.out.println("Test finished at: " + Instant.now());
+        System.out.println("Test finished at: " + System.currentTimeMillis());
     }
 
     @Test
@@ -55,14 +54,14 @@ public class CalculatorTest {
         double result = Calculator.mul(a, b);
 
         // Then
-        assertEquals(5, result);
+        assertEquals(7.5, result);
     }
 
     @Test
     public void testDiv() {
         // Given
         double a = 5;
-        double b = 3;
+        double b = 2;
 
         // When
         double result = Calculator.div(a, b);
@@ -78,6 +77,6 @@ public class CalculatorTest {
         double b = 0;
 
         // When & Then
-        assertThrows(ArithmeticException.class, () -> Calculator.div(a, b));
+        assertThrows(IllegalArgumentException.class, () -> Calculator.div(a, b));
     }
 }
